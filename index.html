@@ -7,55 +7,55 @@
 </head>
 <body>
 
-<header>
-  <h1>⚡ GreenDrive Hub</h1>
-  <p>Drive Smart. Save Earth.</p>
-</header>
+<nav>
+  <h1>⚡ GreenDrive</h1>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#calc">Calculator</a></li>
+    <li><a href="#compare">Compare</a></li>
+  </ul>
+</nav>
 
 <section class="hero">
-  <h2>Switch to Electric Vehicles</h2>
-  <p>Reduce pollution & save money</p>
+  <h2>Drive the Future 🚗⚡</h2>
+  <p>Electric Vehicles = Less Cost + Zero Pollution</p>
+  <button onclick="scrollToCalc()">Try Calculator</button>
 </section>
 
-<section class="calculator">
-  <h2>🌱 Carbon Footprint Calculator</h2>
-  
-  <input type="number" id="distance" placeholder="Distance (km)">
-  <input type="number" id="petrol" placeholder="Petrol cost per liter (₹)">
-  
-  <button onclick="calculate()">Calculate</button>
-  
-  <div id="result"></div>
+<section id="calc" class="calculator">
+  <h2>🌱 Carbon & Cost Calculator</h2>
+
+  <div class="card">
+    <input type="number" id="distance" placeholder="Distance (km)">
+    <input type="number" id="petrol" placeholder="Petrol price (₹)">
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
 </section>
 
-<section class="comparison">
+<section id="compare" class="comparison">
   <h2>⚡ EV vs Petrol</h2>
-  <table>
-    <tr>
-      <th>Factor</th>
-      <th>EV</th>
-      <th>Petrol</th>
-    </tr>
-    <tr>
-      <td>Cost/km</td>
-      <td>₹1-2</td>
-      <td>₹6-10</td>
-    </tr>
-    <tr>
-      <td>Pollution</td>
-      <td>Zero</td>
-      <td>High</td>
-    </tr>
-    <tr>
-      <td>Maintenance</td>
-      <td>Low</td>
-      <td>High</td>
-    </tr>
-  </table>
+
+  <div class="cards">
+    <div class="box ev">
+      <h3>⚡ EV</h3>
+      <p>Cost/km: ₹1-2</p>
+      <p>Pollution: 0%</p>
+      <p>Maintenance: Low</p>
+    </div>
+
+    <div class="box petrol">
+      <h3>⛽ Petrol</h3>
+      <p>Cost/km: ₹6-10</p>
+      <p>Pollution: High</p>
+      <p>Maintenance: High</p>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <p>Made by Nishi 🚀</p>
+  <p>Made with ⚡ by Nishi</p>
 </footer>
 
 <script src="script.js"></script>

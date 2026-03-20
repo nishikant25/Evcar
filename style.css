@@ -1,46 +1,75 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI';
+  font-family: 'Poppins', sans-serif;
   background: #0f172a;
   color: white;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(90deg, #22c55e, #16a34a);
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #020617;
 }
 
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HERO */
 .hero {
   text-align: center;
-  padding: 60px;
-  background: url('https://images.unsplash.com/photo-ev-car') no-repeat center;
-  background-size: cover;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
 }
 
+.hero button {
+  padding: 12px 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* CALCULATOR */
 .calculator {
-  padding: 40px;
+  padding: 60px;
   text-align: center;
+}
+
+.card {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 input {
+  display: block;
+  margin: 10px auto;
   padding: 10px;
-  margin: 10px;
+  width: 200px;
   border-radius: 5px;
   border: none;
 }
 
 button {
-  padding: 12px 20px;
+  padding: 10px 15px;
   background: #22c55e;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button:hover {
-  background: #16a34a;
 }
 
 #result {
@@ -48,22 +77,33 @@ button:hover {
   font-size: 18px;
 }
 
+/* COMPARISON */
 .comparison {
-  padding: 40px;
+  padding: 60px;
   text-align: center;
 }
 
-table {
-  width: 80%;
-  margin: auto;
-  border-collapse: collapse;
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-td, th {
-  padding: 10px;
-  border: 1px solid white;
+.box {
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
 }
 
+.ev {
+  background: #22c55e;
+}
+
+.petrol {
+  background: #ef4444;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;

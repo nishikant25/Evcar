@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.hero {
+  text-align: center;
+  padding: 60px;
+  background: url('https://images.unsplash.com/photo-ev-car') no-repeat center;
+  background-size: cover;
+}
+
+.calculator {
+  padding: 40px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  padding: 12px 20px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.comparison {
+  padding: 40px;
+  text-align: center;
+}
+
+table {
+  width: 80%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}

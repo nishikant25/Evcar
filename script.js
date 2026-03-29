@@ -37,3 +37,10 @@ new Chart(ctx, {
     }]
   }
 });
+function carbonCalc() {
+  let km = document.getElementById("fuelKm").value;
+  let co2 = km * 0.2;
+
+  document.getElementById("carbonResult").innerText =
+    "You produce " + co2 + " kg CO2/day 😬";
+}

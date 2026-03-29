@@ -24,3 +24,16 @@ function compareCars() {
       "Both cost same 🤝";
   }
 }
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Petrol Car', 'EV Car'],
+    datasets: [{
+      label: 'Monthly Cost ₹',
+      data: [8000, 2000],
+      borderWidth: 1
+    }]
+  }
+});

@@ -2,52 +2,171 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GreenDrive Hub</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV World</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #020617;
+}
+
+nav h1 {
+  color: #22c55e;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+}
+
+.hero button {
+  padding: 12px 25px;
+  background: #22c55e;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Cards */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  color: #22c55e;
+}
+
+/* Calculator */
+.calculator {
+  text-align: center;
+  padding: 40px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>⚡ GreenDrive Hub</h1>
-  <p>Smart EV Calculator & Tracker</p>
-</header>
+<!-- Navbar -->
+<nav>
+  <h1>EV World ⚡</h1>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Cars</a>
+    <a href="#">Compare</a>
+  </div>
+</nav>
 
+<!-- Hero -->
 <section class="hero">
-  <h2>Drive Electric. Save Future.</h2>
-  <button onclick="scrollToCalc()">Start Now</button>
+  <h2>Future of Electric Vehicles</h2>
+  <p>Explore EV Cars, Prices & Benefits</p>
+  <button onclick="showMessage()">Explore Now</button>
 </section>
 
-<section id="calc" class="grid">
-
+<!-- Cards -->
+<div class="container">
   <div class="card">
-    <h2>🌱 Calculator</h2>
-
-    <input id="distance" placeholder="Distance (km)">
-    <input id="petrol" placeholder="Petrol price (₹)">
-
-    <button onclick="calculate()">Calculate</button>
-
-    <div id="result"></div>
+    <h3>Tata Nexon EV</h3>
+    <p>Range: 465 km</p>
+    <p>Price: ₹15L</p>
   </div>
 
   <div class="card">
-    <h2>📊 Stats</h2>
-    <p>Total Carbon Saved:</p>
-    <h3 id="total">0 kg</h3>
+    <h3>MG ZS EV</h3>
+    <p>Range: 461 km</p>
+    <p>Price: ₹18L</p>
   </div>
 
   <div class="card">
-    <h2>🕒 History</h2>
-    <ul id="history"></ul>
+    <h3>BYD Atto 3</h3>
+    <p>Range: 521 km</p>
+    <p>Price: ₹33L</p>
   </div>
+</div>
 
+<!-- Calculator -->
+<section class="calculator">
+  <h2>EV Savings Calculator 💰</h2>
+  <input type="number" id="km" placeholder="KM per day">
+  <br>
+  <button onclick="calculate()">Calculate Savings</button>
+  <p id="result"></p>
 </section>
 
+<!-- Footer -->
 <footer>
-  <p>⚡ Built by Nishi</p>
+  <p>© 2026 EV World | Made by Nishikant ⚡</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+function showMessage() {
+  alert("Welcome to EV World 🚗⚡");
+}
+
+function calculate() {
+  let km = document.getElementById("km").value;
+  let savings = km * 5; 
+  document.getElementById("result").innerText =
+    "You save approx ₹" + savings + " per day!";
+}
+</script>
+
 </body>
 </html>

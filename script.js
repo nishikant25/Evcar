@@ -44,3 +44,18 @@ function carbonCalc() {
   document.getElementById("carbonResult").innerText =
     "You produce " + co2 + " kg CO2/day 😬";
 }
+function recommend() {
+  let budget = document.getElementById("budget").value;
+
+  let result = "";
+
+  if (budget <= 15) {
+    result = "Best: Tata Nexon EV 🔥";
+  } else if (budget <= 20) {
+    result = "Best: MG ZS EV ⚡";
+  } else {
+    result = "Best: BYD Atto 3 🚀";
+  }
+
+  document.getElementById("aiResult").innerText = result;
+}

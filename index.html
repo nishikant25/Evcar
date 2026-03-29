@@ -3,125 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EV World</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0f172a;
-  color: white;
-}
-
-/* Navbar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: #020617;
-}
-
-nav h1 {
-  color: #22c55e;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.hero h2 {
-  font-size: 40px;
-}
-
-.hero button {
-  padding: 12px 25px;
-  background: #22c55e;
-  border: none;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Cards */
-.container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 40px;
-}
-
-.card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  width: 250px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card h3 {
-  color: #22c55e;
-}
-
-/* Calculator */
-.calculator {
-  text-align: center;
-  padding: 40px;
-}
-
-input {
-  padding: 10px;
-  margin: 10px;
-}
-
-button {
-  padding: 10px 20px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
-}
-</style>
+<title>EV World Pro</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Navbar -->
 <nav>
   <h1>EV World ⚡</h1>
   <div>
     <a href="#">Home</a>
-    <a href="#">Cars</a>
-    <a href="#">Compare</a>
+    <a href="#cars">Cars</a>
+    <a href="#compare">Compare</a>
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
-  <h2>Future of Electric Vehicles</h2>
-  <p>Explore EV Cars, Prices & Benefits</p>
-  <button onclick="showMessage()">Explore Now</button>
+  <h2>Drive the Future 🚗⚡</h2>
+  <p>Compare, Analyze & Save with Electric Vehicles</p>
+  <button onclick="scrollToCars()">Explore</button>
 </section>
 
-<!-- Cards -->
-<div class="container">
+<section id="cars" class="container">
   <div class="card">
     <h3>Tata Nexon EV</h3>
     <p>Range: 465 km</p>
@@ -139,34 +42,38 @@ footer {
     <p>Range: 521 km</p>
     <p>Price: ₹33L</p>
   </div>
-</div>
+</section>
 
-<!-- Calculator -->
+<section id="compare" class="compare">
+  <h2>Compare EVs ⚖️</h2>
+
+  <select id="car1">
+    <option value="15">Nexon EV</option>
+    <option value="18">MG ZS EV</option>
+    <option value="33">BYD Atto 3</option>
+  </select>
+
+  <select id="car2">
+    <option value="15">Nexon EV</option>
+    <option value="18">MG ZS EV</option>
+    <option value="33">BYD Atto 3</option>
+  </select>
+
+  <button onclick="compareCars()">Compare</button>
+  <p id="compareResult"></p>
+</section>
+
 <section class="calculator">
-  <h2>EV Savings Calculator 💰</h2>
+  <h2>Daily Savings 💰</h2>
   <input type="number" id="km" placeholder="KM per day">
-  <br>
-  <button onclick="calculate()">Calculate Savings</button>
+  <button onclick="calculate()">Calculate</button>
   <p id="result"></p>
 </section>
 
-<!-- Footer -->
 <footer>
-  <p>© 2026 EV World | Made by Nishikant ⚡</p>
+  <p>© 2026 EV World Pro | Nishikant ⚡</p>
 </footer>
 
-<script>
-function showMessage() {
-  alert("Welcome to EV World 🚗⚡");
-}
-
-function calculate() {
-  let km = document.getElementById("km").value;
-  let savings = km * 5; 
-  document.getElementById("result").innerText =
-    "You save approx ₹" + savings + " per day!";
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

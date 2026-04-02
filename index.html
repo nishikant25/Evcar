@@ -2,37 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EV Compare Pro</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Electric Drive Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <!-- Navbar -->
-<div class="navbar">
-  ⚡ EV Compare Pro
-</div>
+<header>
+  <h1>⚡ Electric Drive Hub</h1>
+</header>
 
 <!-- Hero -->
-<div class="hero">
-  <h1>Compare Electric Cars</h1>
-  <p>Find the best EV for your needs</p>
-</div>
+<section class="hero">
+  <h2>Compare Electric Cars Easily</h2>
+  <p>Find the best EV based on price, range & performance</p>
+</section>
 
-<!-- Car Container -->
-<div id="carContainer" class="container"></div>
+<!-- Cars -->
+<section id="carList" class="grid"></section>
 
-<!-- Compare Button -->
+<!-- Compare -->
 <div class="center">
-  <button onclick="compareCars()" class="compare-btn">
-    🚀 Compare Cars
-  </button>
+  <button onclick="compareCars()">Compare Selected</button>
 </div>
 
 <!-- Result -->
-<div id="result" class="result"></div>
+<section id="result"></section>
 
 <script src="script.js"></script>
 

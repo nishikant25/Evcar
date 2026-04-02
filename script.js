@@ -63,6 +63,17 @@ function compareCars() {
   function showInfo(i) {
   alert(cars[i].info);
 }
+  function calculateSavings() {
+  let km = document.getElementById("km").value;
+
+  let petrolCost = km * 8;   // ₹8/km
+  let evCost = km * 2;       // ₹2/km
+
+  let savings = petrolCost - evCost;
+
+  document.getElementById("savingResult").innerHTML =
+    "You save approx ₹" + savings + " per month using EV 🚗⚡";
+}
 }
 
 loadCars();

@@ -1,61 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <meta charset="UTF-8">
   <title>EV Compare Pro</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-    }
-
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="text-white font-sans">
+<body>
 
-  <!-- Navbar -->
-  <div class="flex justify-between items-center px-8 py-4 glass">
-    <h1 class="text-xl font-bold">⚡ EV Compare</h1>
-    <button class="bg-white text-black px-4 py-2 rounded-lg hover:scale-105 transition">
-      Login
-    </button>
-  </div>
+<!-- Navbar -->
+<div class="navbar">
+  ⚡ EV Compare Pro
+</div>
 
-  <!-- Hero -->
-  <div class="text-center mt-16 px-4">
-    <h1 class="text-5xl font-extrabold leading-tight">
-      Find Your Perfect <span class="text-green-400">Electric Car</span>
-    </h1>
-    <p class="text-gray-400 mt-4 text-lg">
-      Compare range, price, and performance instantly ⚡
-    </p>
-  </div>
+<!-- Hero -->
+<div class="hero">
+  <h1>Compare Electric Cars</h1>
+  <p>Find the best EV for your needs</p>
+</div>
 
-  <!-- Cards -->
-  <div id="carContainer"
-    class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 mt-16">
-  </div>
+<!-- Car Container -->
+<div id="carContainer" class="container"></div>
 
-  <!-- Compare Button -->
-  <div class="text-center mt-12">
-    <button onclick="compareCars()"
-      class="bg-green-400 text-black px-8 py-3 rounded-full font-bold hover:scale-110 transition">
-      🚀 Compare Now
-    </button>
-  </div>
+<!-- Compare Button -->
+<div class="center">
+  <button onclick="compareCars()" class="compare-btn">
+    🚀 Compare Cars
+  </button>
+</div>
 
-  <!-- Result -->
-  <div id="result" class="mt-16 px-8"></div>
+<!-- Result -->
+<div id="result" class="result"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>

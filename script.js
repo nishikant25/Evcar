@@ -1,90 +1,99 @@
-const cars = [
-  {
-    name: "Tata Nexon EV",
-    range: "312 km",
-    price: "₹14 Lakh"
-  },
-  {
-    name: "MG ZS EV",
-    range: "461 km",
-    price: "₹23 Lakh"
-  },
-  {
-    name: "Mahindra XUV400",
-    range: "456 km",
-    price: "₹16 Lakh"
-  }
-];
-
-const selected = [];
-
-function loadCars() {
-  const container = document.getElementById("carContainer");
-
-  cars.forEach((car, index) => {
-   const container = document.getElementById("carContainer");
-
-cars.forEach((car, index) => {
-  const card = `
-    <div class="glass p-6 rounded-2xl shadow-xl hover:scale-105 transition duration-300">
-      
-      <img src="https://source.unsplash.com/400x200/?electric-car"
-        class="rounded-xl mb-4">
-
-      <h2 class="text-2xl font-bold">${car.name}</h2>
-      
-      <p class="text-gray-300 mt-2">⚡ Range: ${car.range}</p>
-      <p class="text-gray-300">💰 Price: ${car.price}</p>
-
-      <button onclick="selectCar(${index})"
-        class="mt-4 w-full bg-blue-500 py-2 rounded-lg hover:bg-blue-600 transition">
-        Select
-      </button>
-    </div>
-  `;
-  container.innerHTML += card;
-});
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
 }
 
-function selectCar(index) {
-  if (selected.length < 2) {
-    selected.push(cars[index]);
-    alert(cars[index].name + " selected!");
-  } else {
-    alert("Only select 2 cars");
-  }
+/* Navbar */
+.navbar {
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-function compareCars() {
-  if (selected.length < 2) {
-    alert("Select 2 cars first!");
-    return;
-  }
-
-  const result = document.getElementById("result");
-
-  result.innerHTML = `
-    <div class="bg-gray-800 p-5 rounded-xl">
-      <h2 class="text-2xl font-bold mb-4">Comparison</h2>
-      <table class="w-full text-left">
-        <tr>
-          <th>Feature</th>
-          <th>${selected[0].name}</th>
-          <th>${selected[1].name}</th>
-        </tr>
-        <tr>
-          <td>Range</td>
-          <td>${selected[0].range}</td>
-          <td>${selected[1].range}</td>
-        </tr>
-        <tr>
-          <td>Price</td>
-          <td>${selected[0].price}</td>
-          <td>${selected[1].price}</td>
-        </tr>
-      </table>
-    </div>
-  `;
+/* Hero */
+.hero {
+  text-align: center;
+  margin-top: 30px;
 }
 
-loadCars();
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  color: #9ca3af;
+}
+
+/* Container */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* Image */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Buttons */
+.select-btn {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: linear-gradient(to right, #22c55e, #3b82f6);
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+.compare-btn {
+  padding: 12px 30px;
+  background: #22c55e;
+  color: black;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Result */
+.result {
+  padding: 40px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.05);
+}
+
+td, th {
+  padding: 12px;
+  border-bottom: 1px solid #444;
+  text-align: center;
+}

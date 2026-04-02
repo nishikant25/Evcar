@@ -1,61 +1,90 @@
-function scrollToCars() {
-  document.getElementById("cars").scrollIntoView({ behavior: "smooth" });
+const cars = [
+  {
+    name: "Tata Nexon EV",
+    range: "312 km",
+    price: "₹14 Lakh"
+  },
+  {
+    name: "MG ZS EV",
+    range: "461 km",
+    price: "₹23 Lakh"
+  },
+  {
+    name: "Mahindra XUV400",
+    range: "456 km",
+    price: "₹16 Lakh"
+  }
+];
+
+const selected = [];
+
+function loadCars() {
+  const container = document.getElementById("carContainer");
+
+  cars.forEach((car, index) => {
+   const container = document.getElementById("carContainer");
+
+cars.forEach((car, index) => {
+  const card = `
+    <div class="glass p-6 rounded-2xl shadow-xl hover:scale-105 transition duration-300">
+      
+      <img src="https://source.unsplash.com/400x200/?electric-car"
+        class="rounded-xl mb-4">
+
+      <h2 class="text-2xl font-bold">${car.name}</h2>
+      
+      <p class="text-gray-300 mt-2">⚡ Range: ${car.range}</p>
+      <p class="text-gray-300">💰 Price: ${car.price}</p>
+
+      <button onclick="selectCar(${index})"
+        class="mt-4 w-full bg-blue-500 py-2 rounded-lg hover:bg-blue-600 transition">
+        Select
+      </button>
+    </div>
+  `;
+  container.innerHTML += card;
+});
 }
 
-function calculate() {
-  let km = document.getElementById("km").value;
-  let savings = km * 5;
-  document.getElementById("result").innerText =
-    "You save ₹" + savings + " per day 🚀";
+function selectCar(index) {
+  if (selected.length < 2) {
+    selected.push(cars[index]);
+    alert(cars[index].name + " selected!");
+  } else {
+    alert("Only select 2 cars");
+  }
 }
 
 function compareCars() {
-  let car1 = document.getElementById("car1").value;
-  let car2 = document.getElementById("car2").value;
-
-  if (car1 < car2) {
-    document.getElementById("compareResult").innerText =
-      "Car 1 is cheaper 💰";
-  } else if (car1 > car2) {
-    document.getElementById("compareResult").innerText =
-      "Car 2 is cheaper 💰";
-  } else {
-    document.getElementById("compareResult").innerText =
-      "Both cost same 🤝";
-  }
-}
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Petrol Car', 'EV Car'],
-    datasets: [{
-      label: 'Monthly Cost ₹',
-      data: [8000, 2000],
-      borderWidth: 1
-    }]
-  }
-});
-function carbonCalc() {
-  let km = document.getElementById("fuelKm").value;
-  let co2 = km * 0.2;
-
-  document.getElementById("carbonResult").innerText =
-    "You produce " + co2 + " kg CO2/day 😬";
-}
-function recommend() {
-  let budget = document.getElementById("budget").value;
-
-  let result = "";
-
-  if (budget <= 15) {
-    result = "Best: Tata Nexon EV 🔥";
-  } else if (budget <= 20) {
-    result = "Best: MG ZS EV ⚡";
-  } else {
-    result = "Best: BYD Atto 3 🚀";
+  if (selected.length < 2) {
+    alert("Select 2 cars first!");
+    return;
   }
 
-  document.getElementById("aiResult").innerText = result;
+  const result = document.getElementById("result");
+
+  result.innerHTML = `
+    <div class="bg-gray-800 p-5 rounded-xl">
+      <h2 class="text-2xl font-bold mb-4">Comparison</h2>
+      <table class="w-full text-left">
+        <tr>
+          <th>Feature</th>
+          <th>${selected[0].name}</th>
+          <th>${selected[1].name}</th>
+        </tr>
+        <tr>
+          <td>Range</td>
+          <td>${selected[0].range}</td>
+          <td>${selected[1].range}</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>${selected[0].price}</td>
+          <td>${selected[1].price}</td>
+        </tr>
+      </table>
+    </div>
+  `;
 }
+
+loadCars();

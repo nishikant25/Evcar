@@ -88,13 +88,22 @@ function compareCars() {
 function calculateSavings() {
   let km = document.getElementById("km").value;
 
+  // convert to number
+  km = Number(km);
+
+  if (km <= 0 || isNaN(km)) {
+    document.getElementById("savingResult").innerHTML =
+      "❌ Please enter valid KM";
+    return;
+  }
+
   let petrol = km * 8;
   let ev = km * 2;
 
   let save = petrol - ev;
 
   document.getElementById("savingResult").innerHTML =
-    "You save ₹" + save + " per month using EV 🚗⚡";
+    "💰 You save ₹" + save + " per month using EV ⚡";
 }
 
 loadCars();

@@ -60,6 +60,9 @@ function compareCars() {
       </tr>
     </table>
   `;
+  function showInfo(i) {
+  alert(cars[i].info);
+}
 }
 
 loadCars();

@@ -1,94 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EV World Pro</title>
-<link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>EV Compare Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
 </head>
 
-<body>
+<body class="text-white font-sans">
 
-<nav>
-  <h1>EV World ⚡</h1>
-  <div>
-    <a href="#">Home</a>
-    <a href="#cars">Cars</a>
-    <a href="#compare">Compare</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h2>Drive the Future 🚗⚡</h2>
-  <p>Compare, Analyze & Save with Electric Vehicles</p>
-  <button onclick="scrollToCars()">Explore</button>
-</section>
-
-<section id="cars" class="container">
-  <div class="card">
-    <h3>Tata Nexon EV</h3>
-    <p>Range: 465 km</p>
-    <p>Price: ₹15L</p>
+  <!-- Navbar -->
+  <div class="flex justify-between items-center px-8 py-4 glass">
+    <h1 class="text-xl font-bold">⚡ EV Compare</h1>
+    <button class="bg-white text-black px-4 py-2 rounded-lg hover:scale-105 transition">
+      Login
+    </button>
   </div>
 
-  <div class="card">
-    <h3>MG ZS EV</h3>
-    <p>Range: 461 km</p>
-    <p>Price: ₹18L</p>
+  <!-- Hero -->
+  <div class="text-center mt-16 px-4">
+    <h1 class="text-5xl font-extrabold leading-tight">
+      Find Your Perfect <span class="text-green-400">Electric Car</span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg">
+      Compare range, price, and performance instantly ⚡
+    </p>
   </div>
 
-  <div class="card">
-    <h3>BYD Atto 3</h3>
-    <p>Range: 521 km</p>
-    <p>Price: ₹33L</p>
+  <!-- Cards -->
+  <div id="carContainer"
+    class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 mt-16">
   </div>
-</section>
 
-<section id="compare" class="compare">
-  <h2>Compare EVs ⚖️</h2>
+  <!-- Compare Button -->
+  <div class="text-center mt-12">
+    <button onclick="compareCars()"
+      class="bg-green-400 text-black px-8 py-3 rounded-full font-bold hover:scale-110 transition">
+      🚀 Compare Now
+    </button>
+  </div>
 
-  <select id="car1">
-    <option value="15">Nexon EV</option>
-    <option value="18">MG ZS EV</option>
-    <option value="33">BYD Atto 3</option>
-  </select>
-
-  <select id="car2">
-    <option value="15">Nexon EV</option>
-    <option value="18">MG ZS EV</option>
-    <option value="33">BYD Atto 3</option>
-  </select>
-
-  <button onclick="compareCars()">Compare</button>
-  <p id="compareResult"></p>
-</section>
-
-<section class="calculator">
-  <h2>Carbon Footprint 🌱</h2>
-  <input type="number" id="fuelKm" placeholder="Petrol KM per day">
-  <button onclick="carbonCalc()">Check Impact</button>
-  <p id="carbonResult"></p>
-</section>
-  <section class="chart">
-  <h2>Fuel vs EV Cost Comparison 📊</h2>
-  <canvas id="myChart" width="400" height="200"></canvas>
-  </section>
-  <section class="compare">
-  <h2>Find Your Perfect EV 🤖</h2>
-
-  <select id="budget">
-    <option value="15">Under 15L</option>
-    <option value="20">Under 20L</option>
-    <option value="35">Premium</option>
-  </select>
-
-  <button onclick="recommend()">Suggest</button>
-  <p id="aiResult"></p>
-</section>
-<footer>
-  <p>© 2026 EV World Pro | Nishikant ⚡</p>
-</footer>
+  <!-- Result -->
+  <div id="result" class="mt-16 px-8"></div>
 
 <script src="script.js"></script>
 </body>

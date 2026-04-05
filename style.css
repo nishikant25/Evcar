@@ -3,6 +3,7 @@ body {
   font-family: Arial;
   background: #0f172a;
   color: white;
+  transition: 0.3s;
 }
 
 header {
@@ -34,10 +35,28 @@ header {
   padding: 20px;
   border-radius: 12px;
   transition: 0.3s;
+
+  /* ✨ Glass effect add */
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(10px);
+
+  /* 🌀 Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+
+  /* ⚡ Glow effect */
+  box-shadow: 0 0 15px #22c55e;
+}
+
+/* 🟢 Selected card highlight */
+.selected {
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 20px #22c55e;
 }
 
 button {
@@ -47,6 +66,13 @@ button {
   background: #22c55e;
   cursor: pointer;
   margin-top: 10px;
+  transition: 0.3s;
+}
+
+/* ⚡ Button glow */
+button:hover {
+  box-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e;
+  transform: scale(1.05);
 }
 
 .center {
@@ -69,9 +95,66 @@ input {
   padding: 10px;
   border-radius: 5px;
   border: none;
+  transition: 0.3s;
 }
+
+/* 🎯 Input focus glow */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #22c55e;
+}
+
 #savingResult {
   margin-top: 15px;
   font-size: 18px;
   color: #22c55e;
+}
+
+/* 🏆 Badge */
+.badge {
+  background: gold;
+  color: black;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* 🔋 Progress bar */
+.progress {
+  height: 8px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #22c55e;
+  animation: fill 1.5s ease-in-out;
+}
+
+/* 🌙 Light mode */
+.light-mode {
+  background: #f1f5f9;
+  color: black;
+}
+
+.light-mode .card {
+  background: #ffffff;
+  color: black;
+}
+
+/* Animations */
+@keyframes fill {
+  from { width: 0; }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

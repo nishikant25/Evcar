@@ -1,81 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>EV Compare Pro</title>
-  <link rel="stylesheet" href="style.css">
+  <title>EV Comparison App</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      width: 200px;
+    }
+    button { margin: 3px; }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>⚡ Electric Drive Hub</h1>
-</header>
+<h1>⚡ EV Comparison App</h1>
 
-<section class="hero">
-  <h2>Compare Electric Cars Easily</h2>
-  <p>Find the best EV based on price, range & performance</p>
-</section>
+<!-- Search + Filter -->
+<input type="text" id="search" placeholder="Search car..." onkeyup="loadCars()">
+<select id="filter" onchange="loadCars()">
+  <option value="all">All</option>
+  <option value="low">Below ₹15L</option>
+  <option value="mid">₹15L - ₹30L</option>
+  <option value="high">Above ₹30L</option>
+</select>
 
-<!-- EV vs Petrol -->
-<section class="section">
-  <h2>⚔️ EV vs Petrol/Diesel</h2>
-  <table>
-    <tr>
-      <th>Feature</th>
-      <th>Electric</th>
-      <th>Petrol/Diesel</th>
-    </tr>
-    <tr>
-      <td>Fuel Cost</td>
-      <td>Very Low ⚡</td>
-      <td>High ⛽</td>
-    </tr>
-    <tr>
-      <td>Maintenance</td>
-      <td>Low</td>
-      <td>High</td>
-    </tr>
-    <tr>
-      <td>Pollution</td>
-      <td>Zero Emission 🌱</td>
-      <td>High Pollution</td>
-    </tr>
-  </table>
-</section>
+<div id="carList"></div>
 
-<!-- Importance -->
-<section class="section">
-  <h2>🌱 Importance of EV</h2>
-  <p>
-   Importance of Electric Vehicles (EVs)
+<button onclick="compareCars()">Compare</button>
+<button onclick="clearSelection()">Clear Selection</button>
 
-Electric vehicles (EVs) are becoming an important part of modern transportation. With the increasing problems of air pollution, rising fuel prices, and climate change, EVs provide a sustainable and efficient alternative to traditional petrol and diesel vehicles. They are not only environmentally friendly but also economically beneficial and technologically advanced.
+<div id="result"></div>
 
-One of the main advantages of electric vehicles is that they help reduce environmental pollution. Unlike conventional vehicles, EVs do not produce harmful emissions such as carbon dioxide and other pollutants. This helps in improving air quality, especially in urban areas where pollution levels are high. By using EVs, we can contribute to a cleaner and healthier environment.
+<hr>
 
-Another important benefit of EVs is cost savings. Although the initial cost of an electric vehicle may be higher, the overall running cost is much lower compared to petrol or diesel vehicles. Electricity is cheaper than fuel, and EVs require less maintenance because they have fewer moving parts. There is no need for engine oil changes, and wear and tear are minimal, which reduces long-term expenses.
-  </p>
-</section>
+<h2>💰 Savings Calculator</h2>
+<input type="number" id="km" placeholder="Monthly KM">
+<input type="number" id="petrolPrice" placeholder="Petrol ₹/km (default 8)">
+<input type="number" id="evPrice" placeholder="EV ₹/km (default 2)">
+<button onclick="calculateSavings()">Calculate</button>
+<p id="savingResult"></p>
 
-<!-- Savings -->
-<section class="section">
-  <h2>💰 EV Savings Calculator</h2>
-  <input type="number" id="km" placeholder="Enter monthly KM">
-  <button onclick="calculateSavings()">Calculate</button>
-  <p id="savingResult"></p>
-</section>
+<hr>
 
-<!-- Cars -->
-<section id="carList" class="grid"></section>
+<h2>🧠 Car Recommendation</h2>
+<input type="number" id="budget" placeholder="Enter Budget (₹ in Lakh)">
+<button onclick="recommendCar()">Suggest</button>
+<p id="recommendResult"></p>
 
-<div class="center">
-  <button onclick="compareCars()">Compare Selected</button>
-</div>
+<script>
+const cars = [
+  { name: "Tata Nexon EV", range: 465, price: 14, rating: 4.5 },
+  { name: "MG ZS EV", range: 461, price: 23, rating: 4.6 },
+  { name: "Kia EV6", range: 708, price: 65, rating: 4.8 },
+  { name: "Tiago EV", range: 315, price: 8.5, rating: 4.2 }
+];
 
-<section id="result"></section>
+let selected = [];
 
-<script src="script.js"></script>
+function loadCars() {
+  const list = document.getElementById("carList");
+  const search = document.getElementById("search").value.toLowerCase();
+  const filter = document.getElementById("filter").value;
+
+  list.innerHTML = "";
+
+  cars.forEach((car, i) => {
+    if (!car.name.toLowerCase().includes(search)) return;
+
+    if (filter === "low" && car.price > 15) return;
+    if (filter === "mid" && (car.price < 15 || car.price > 30)) return;
+    if (filter === "high" && car.price < 30) return;
+
+    list.innerHTML += `
+      <div class="card">
+        <h3>${car.name}</h3>
+        <p>⚡ ${car.range} km</p>
+        <p>💰 ₹${car.price}L</p>
+        <p>⭐ ${car.rating}</p>
+        <button onclick="selectCar(${i})">Select</button>
+      </div>
+    `;
+  });
+}
+
+function selectCar(i) {
+  if (selected.length < 2) {
+    selected.push(cars[i]);
+    alert("Selected: " + cars[i].name);
+  } else {
+    alert("Only 2 cars allowed");
+  }
+}
+
+function clearSelection() {
+  selected = [];
+  alert("Selection Cleared");
+}
+
+function compareCars() {
+  if (selected.length < 2) {
+    alert("Select 2 cars first");
+    return;
+  }
+
+  let bestRange = selected[0].range > selected[1].range ? selected[0].name : selected[1].name;
+
+  document.getElementById("result").innerHTML = `
+    <h2>Comparison</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>${selected[0].name}</th>
+        <th>${selected[1].name}</th>
+      </tr>
+      <tr>
+        <td>Range</td>
+        <td>${selected[0].range}</td>
+        <td>${selected[1].range}</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td>₹${selected[0].price}L</td>
+        <td>₹${selected[1].price}L</td>
+      </tr>
+    </table>
+    <p>🏆 Best Range: ${bestRange}</p>
+  `;
+}
+
+function calculateSavings() {
+  let km = Number(document.getElementById("km").value);
+  let petrol = Number(document.getElementById("petrolPrice").value) || 8;
+  let ev = Number(document.getElementById("evPrice").value) || 2;
+
+  if (km <= 0) {
+    document.getElementById("savingResult").innerHTML = "❌ Enter valid KM";
+    return;
+  }
+
+  let monthly = (km * petrol) - (km * ev);
+  let yearly = monthly * 12;
+
+  document.getElementById("savingResult").innerHTML =
+    💰 Monthly Save: ₹${monthly} <br> 📅 Yearly Save: ₹${yearly};
+}
+
+function recommendCar() {
+  let budget = Number(document.getElementById("budget").value);
+
+  let best = cars
+    .filter(c => c.price <= budget)
+    .sort((a, b) => b.range - a.range)[0];
+
+  if (best) {
+    document.getElementById("recommendResult").innerHTML =
+      "✅ Best Choice: " + best.name;
+  } else {
+    document.getElementById("recommendResult").innerHTML =
+      "❌ No car in budget";
+  }
+}
+
+loadCars();
+</script>
 
 </body>
 </html>
